@@ -64,11 +64,88 @@ public void mt_getResult(){
 <br />
 
 # 1-b：
+```
+void Update() {                                                   // 生命週期函式：每一影格（Frame）自動執行一次[cite: 1]
+    Keyboard keyboard = Keyboard.current;                         // 宣告 Keyboard 變數，取得目前連接的作用中鍵盤裝置[cite: 2, 3]
+    if (keyboard == null) {                                       // 防呆判斷：若系統偵測不到任何鍵盤實例[cite: 3]
+        return;                                                   // 提早結束當前影格的執行，避免後續存取產生例外錯誤[cite: 3]
+    }                                                             // 防呆判斷區塊結束
+
+    // 1. 取得各按鍵目前是否被按下
+    bool isW = keyboard.wKey.isPressed;                           // 宣告布林變數 isW，紀錄 W 鍵當前是否處於被按住狀態[cite: 2]
+    bool isA = keyboard.aKey.isPressed;                           // 宣告布林變數 isA，紀錄 A 鍵當前是否處於被按住狀態
+    bool isS = keyboard.sKey.isPressed;                           // 宣告布林變數 isS，紀錄 S 鍵當前是否處於被按住狀態
+    bool isD = keyboard.dKey.isPressed;                           // 宣告布林變數 isD，紀錄 D 鍵當前是否處於被按住狀態
+
+    // 2. 優先判斷 6 種雙鍵複合鍵組合（符合任一組即印出並 return，避免重複印出單鍵）
+    if (isW && isA)                                               // 判斷條件：W 鍵與 A 鍵是否同時被按下
+    {                                                             // W+A 判斷區塊開始
+        Debug.Log("玩家按了 W+A 鍵！");                             // 在主控台輸出 W+A 複合鍵的訊息
+        return;                                                   // 結束本次 Update，避免後續單鍵判斷被重複觸發
+    }                                                             // W+A 判斷區塊結束
+
+    if (isW && isS)                                               // 判斷條件：W 鍵與 S 鍵是否同時被按下
+    {                                                             // W+S 判斷區塊開始
+        Debug.Log("玩家按了 W+S 鍵！");                             // 在主控台輸出 W+S 複合鍵的訊息
+        return;                                                   // 結束本次 Update，避免後續單鍵判斷被重複觸發
+    }                                                             // W+S 判斷區塊結束
+
+    if (isW && isD)                                               // 判斷條件：W 鍵與 D 鍵是否同時被按下
+    {                                                             // W+D 判斷區塊開始
+        Debug.Log("玩家按了 W+D 鍵！");                             // 在主控台輸出 W+D 複合鍵的訊息
+        return;                                                   // 結束本次 Update，避免後續單鍵判斷被重複觸發
+    }                                                             // W+D 判斷區塊結束
+
+    if (isA && isS)                                               // 判斷條件：A 鍵與 S 鍵是否同時被按下
+    {                                                             // A+S 判斷區塊開始
+        Debug.Log("玩家按了 A+S 鍵！");                             // 在主控台輸出 A+S 複合鍵的訊息
+        return;                                                   // 結束本次 Update，避免後續單鍵判斷被重複觸發
+    }                                                             // A+S 判斷區塊結束
+
+    if (isA && isD)                                               // 判斷條件：A 鍵與 D 鍵是否同時被按下
+    {                                                             // A+D 判斷區塊開始
+        Debug.Log("玩家按了 A+D 鍵！");                             // 在主控台輸出 A+D 複合鍵的訊息
+        return;                                                   // 結束本次 Update，避免後續單鍵判斷被重複觸發
+    }                                                             // A+D 判斷區塊結束
+
+    if (isS && isD)                                               // 判斷條件：S 鍵與 D 鍵是否同時被按下
+    {                                                             // S+D 判斷區塊開始
+        Debug.Log("玩家按了 S+D 鍵！");                             // 在主控台輸出 S+D 複合鍵的訊息
+        return;                                                   // 結束本次 Update，避免後續單鍵判斷被重複觸發
+    }                                                             // S+D 判斷區塊結束
+
+    // 3. 若沒有同時按雙鍵，才檢查單鍵輸入
+    if (isW)                                                      // 條件判斷：若僅按下了 W 鍵
+    {                                                             // W 判斷區塊開始
+        Debug.Log("玩家按了 W 鍵！");                               // 在主控台輸出 W 鍵的訊息[cite: 2]
+    }                                                             // W 判斷區塊結束
+    else if (isA)                                                 // 條件判斷：若僅按下了 A 鍵
+    {                                                             // A 判斷區塊開始
+        Debug.Log("玩家按了 A 鍵！");                               // 在主控台輸出 A 鍵的訊息
+    }                                                             // A 判斷區塊結束
+    else if (isS)                                                 // 條件判斷：若僅按下了 S 鍵
+    {                                                             // S 判斷區塊開始
+        Debug.Log("玩家按了 S 鍵！");                               // 在主控台輸出 S 鍵的訊息
+    }                                                             // S 判斷區塊結束
+    else if (isD)                                                 // 條件判斷：若僅按下了 D 鍵
+    {                                                             // D 判斷區塊開始
+        Debug.Log("玩家按了 D 鍵！");                               // 在主控台輸出 D 鍵的訊息
+    }                                                             // D 判斷區塊結束
+}                                                                 // Update 函式結束
+```
+<br />
+
+![alt text](img/a-s.png)
+
+![alt text](img/s-d.png)
+
+![alt text](img/w-a.png)
+
+![alt text](img/w-d.png)
 
 
   
 
-Ans:
 
 
 ## 其他

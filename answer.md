@@ -53,13 +53,20 @@ public void mt_getResult(){
 
 請在撰寫"說明程式與內容"該塊內容，請把原該塊內上述敘述刪除，該塊上述內容只是用來指引該怎麼撰寫內容。
 
-1. 
+# 1-a：
+![alt text](img/1.png)
+<br />
 
-    a.
+![alt text](img/2.png)
+<br />
 
-Ans:
+![alt text](img/3.png)
+<br />
 
-    b. 
+# 1-b：
+
+
+  
 
 Ans:
 
